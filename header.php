@@ -51,8 +51,8 @@ body::before {
     z-index: -1;
     background: url('assets/img/632225.jpg');
     background-size: cover;
-    -webkit-filter: blur(10px);
-    filter: blur(10px);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
     position: absolute !important;
     top: 0;
     right: 0;
