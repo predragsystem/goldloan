@@ -100,10 +100,7 @@ function downloadJewellery(reportType){
 		<div class="content">
 			<div class="container-fluid">
 				<br>
-										<u><a href='#' data-target="#smallAlertModal" data-toggle="modal" style="color: #1570f7;
-									font-weight: bold;">
-											Business Loan Report
-										</a></u>  <br><br>
+										
 										<u><a href="#" style="color: #1570f7;
 													font-weight: bold;" data-target="#monthlySalesReport" data-toggle="modal" >
 													Jewellery Loan Report</a></u>  <br><br>

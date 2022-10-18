@@ -47,7 +47,7 @@ body::before {
     content: '';
     width: 100%;
     height: 100%;
-    display: block;
+   
     z-index: -1;
     background: url('assets/img/632225.jpg');
     background-size: cover;
@@ -60,7 +60,7 @@ body::before {
 </style>
 <body>
  
-<nav class="navbar navbar-ct-danger navbar-fixed-top" role="navigation-demo" id="demo-navbar">
+<nav class="navbar navbar-ct-danger " role="navigation-demo" id="demo-navbar">
   <div class="container-header">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

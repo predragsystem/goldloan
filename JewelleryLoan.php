@@ -1,6 +1,6 @@
 
 <?php include 'header.php'; 
- include 'database/DatabaseConfig.php';?><br><br><br><br><br>
+ include 'database/DatabaseConfig.php';?>
  <style type="text/css">
  	.mobileview {
     margin-right: 0px;

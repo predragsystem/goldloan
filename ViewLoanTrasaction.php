@@ -1,5 +1,5 @@
 <?php  include 'header.php'; 
- include 'database/DatabaseConfig.php'; ?><br><br><br><br><br>
+ include 'database/DatabaseConfig.php'; ?>
 
  <style type="text/css">
 @media screen and (min-device-width: 320px) and (max-device-width: 767px) {.mobileView{
