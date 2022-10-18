@@ -42,8 +42,20 @@ body{
 
 }
 }
-body{
- background-color: #ddd;
+
+body::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+    background: url('assets/img/632225.jpg');
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    position: absolute !important;
+    top: 0;
+    right: 0;
 }
 </style>
 <body>

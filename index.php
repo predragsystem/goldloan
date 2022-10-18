@@ -40,7 +40,22 @@
 <script src="assets/js/ct-paper-radio.js"></script>
 <script src="assets/js/bootstrap-select.js"></script>
 <script src="assets/js/bootstrap-datepicker.js"></script>
-      
+      <style type="text/css">
+          .background::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+    background: url('assets/img/landscape.jpg');
+    background-size: cover;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+    position: absolute !important;
+    top: 0;
+    right: 0;
+}
+      </style>
 </head>
 <body class="full-screen login">
     <nav class="navbar navbar-ct-transparent navbar-fixed-top" role="navigation-demo" id="register-navbar">
@@ -71,7 +86,7 @@
     </nav> 
     
     <div class="wrapper">
-        <div class="background" style="background-image: url('assets/img/landscape.jpg');"> 
+        <div class="background"> 
             <div class="filter-black"></div>
             <div class="container tim">
                     <div class="row">
