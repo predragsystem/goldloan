@@ -1,0 +1,235 @@
+
+.dashboard .card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 200px;
+  min-width: 250px;
+  margin: 16px;
+  padding: 20px;
+  background: #fff;
+}
+.dashboard .bg-img{
+    background-image: url("../../assets/img/bg_wall.jpg");
+
+}
+.dashboard .card--loading,
+.dashboard .card__title:empty,
+.dashboard .card__paragraph:empty {
+  border-radius: 4px;
+  background: linear-gradient(-90deg, #d1d1d1, #f1f1f1, #d1d1d1) no-repeat;
+  background-size: 200% 200%;
+  -webkit-animation: card--loading 1.5s infinite;
+          animation: card--loading 1.5s infinite;
+
+}
+.dashboard .card__title {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+}
+.dashboard .card__title:empty {
+  width: 100%;
+  height: 15px;
+  margin-bottom: 30px;
+}
+.dashboard .card__paragraph {
+.dashboard   font-weight: 300;
+}
+.dashboard ..dashboard card__paragraph:empty {
+  width: 100%;
+  height: 10px;
+}
+.dashboard .shadow {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  will-change: transform;
+}
+.dashboard .shadow:before,
+.dashboard .shadow:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  will-change: opacity;
+}
+.dashboard .shadow:before {
+  box-shadow: 0 35px 50px -30px rgba(0,0,0,0.2);
+}
+.dashboard .shadow:after {
+  opacity: 0;
+  box-shadow: 0 55px 50px -17px rgba(0,0,0,0.22);
+}
+.dashboard .shadow:hover {
+  transform: translateY(-5%);
+}
+.dashboard .shadow:hover:before {
+  opacity: 0;
+}
+.dashboard .shadow:hover:after {
+  opacity: 1;
+}
+.dashboard .shadow:active {
+  transform: translateY(5%) scale(0.9);
+}
+.dashboard .shadow:active:before {
+  opacity: 1;
+}
+.dashboard .shadow:active:after {
+  opacity: 0;
+}
+@-webkit-keyframes card--loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes card--loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+h4{
+  font-weight: bolder;
+  color: #151312;
+}
+    .spanColor{
+      font-weight: bolder;
+        color: red;
+    }
+    .viewproftabledata{
+  font-size: 15px;
+  font-weight: 600;
+  color: #40261a;
+}
+.tabledatafromdb{
+  font-size: 15px;
+  font-weight: 600;
+}
+.card-title{
+    margin-top:0px;
+}
+.form-control.border-primary{
+        border: 1px solid #CCC5B9;
+}
+@media (min-width: 768px) and (max-width: 768px) {
+  
+.card-title{
+    margin-top: 120px;
+    text-align:left;
+    
+}
+    .viewproftabledata{
+  font-size: 15px;
+  font-weight: 600;
+  color: #40261a;
+}
+.tabledatafromdb{
+  font-size: 15px;
+  font-weight: 600;
+}
+.card-title{
+    margin-top:0px;
+}
+.form-control.border-primary{
+        border: 1px solid #CCC5B9;
+}
+
+
+
+
+@media (min-width: 768px) and (max-width: 768px) {
+  
+.card-title{
+    margin-top: 120px;
+    text-align:left;
+    
+}
+
+}
+/*Business loan*/
+
+.card-title{
+  font-weight: bolder;
+  color: black;
+}
+  
+    .viewproftabledata{
+  font-size: 15px;
+  font-weight: 600;
+  color: #40261a;
+}
+.tabledatafromdb{
+  font-size: 15px;
+  font-weight: 600;
+}
+.card-title{
+    margin-top:0px;
+}
+.form-control.border-primary{
+        border: 1px solid #CCC5B9;
+}
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 768px) {
+  #firstmonthinterest{
+    font-size: 15px;
+  }
+
+  .card-title{
+    margin-top: 120px;
+    text-align:left;
+    
+}
+}
+
+
+/*End*/
+
+/*Dashboard*/
+.form-control.border-primary{
+            border: 1px solid #CCC5B9;
+    }
+    @media (min-width: 768px) and (max-width: 768px) {
+  
+.card-title{
+    margin-top: 120px;
+    text-align:left;
+    
+    }
+
+}
+
+
+
+/*End*/
+
+/*BusinessLoanPayment*/
+
+
+
+/*End*/
+
+ 
