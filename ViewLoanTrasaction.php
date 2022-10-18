@@ -43,7 +43,7 @@ table td{
                 $toalMonth = 0;
 
 
-                $sqlQuery="SELECT  lt.*,Jl.*,jt.* FROM jewellery_loan as jl 
+                $sqlQuery="SELECT  lt.*,jl.*,jt.* FROM jewellery_loan as jl 
                 inner join jewellery_loan_transaction as lt on lt.loan_id=jl.loan_id 
                 inner join jewellery_loan_item as jt on jt.jewellery_loan_id=lt.id";
 
