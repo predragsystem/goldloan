@@ -44,7 +44,7 @@
 </head>
 <body class="full-screen login">
     <nav class="navbar navbar-ct-transparent navbar-fixed-top" role="navigation-demo" id="register-navbar">
-      <div class="container">
+      <div class="container tim">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -73,7 +73,7 @@
     <div class="wrapper">
         <div class="background" style="background-image: url('assets/img/landscape.jpg');"> 
             <div class="filter-black"></div>
-            <div class="container">
+            <div class="container tim">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
 
