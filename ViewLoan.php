@@ -23,7 +23,7 @@
  <body>
  
   <?php
-                $sqlQuery="SELECT loan_id,loan_date,customer_name,loan_grand_amount,interest_percentage,month_interest_amount,paid_amt FROM jewellery_loan WHERE status='ACTIVE' ";
+                $sqlQuery="SELECT loan_id,phone,loan_date,customer_name,loan_grand_amount,interest_percentage,month_interest_amount,paid_amt FROM jewellery_loan WHERE status='ACTIVE' ";
                 $query = mysqli_query($conn,$sqlQuery);
                
          ?>
@@ -38,6 +38,7 @@
                 <tr>
                     <th scope="col">Loan ID</th>
                     <th scope="col">Customer Name</th>
+                    <th scope="col">Contact</th>
                     <th scope="col">Loan Date</th>
                     <th scope="col">Loan Amount</th>
                     <th scope="col">Total Intrest</th>
@@ -69,7 +70,8 @@
                     <tr>
                        <td><a href='<?=$loanUrl;?>'><?php echo $data['loan_id'];?></a></td>
                        <td><a href='<?=$loanUrl;?>'><?php echo $data['customer_name'];?></a></td>
-                       <td><?php echo $data['loan_date'];?></td>
+                        <td><?php echo $data['loan_date'];?></td>
+                       <td><?php echo $data['phone'];?></td>
                        <td><?php echo round($data['loan_grand_amount']);?></td>
                        <td><?php echo $finalinterest;?></td>
                        <td><?php echo round($data['paid_amt'],2);?></td>
