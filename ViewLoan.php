@@ -38,8 +38,8 @@
                 <tr>
                     <th scope="col">Loan ID</th>
                     <th scope="col">Customer Name</th>
-                    <th scope="col">Contact</th>
                     <th scope="col">Loan Date</th>
+                    <th scope="col">Contact</th>
                     <th scope="col">Loan Amount</th>
                     <th scope="col">Total Intrest</th>
                     <th scope="col">Paid Amount</th>
