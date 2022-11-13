@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Gold Loan Software</title>
+    <title>Apka Munim Girvi Loan Software</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -73,10 +73,10 @@ body::before {
       <a href="Dashboard.php">
            <div class="logo-container">
                 <div class="logo">
-                    <img src="assets/img/logo/logo7.png" alt="Creative Tim Logo">
+                    <img src="assets/img/logo/apka_munim.png" alt="Best Girvi Loan Software">
                 </div>
                 <div class="brand">
-                    Loan Software
+                   
                 </div>
             </div>
       </a>

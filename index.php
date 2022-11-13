@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     
-    <title>PreDrag Gold Loan</title>
+    <title>Apka Munim - Best Girvi Loan Managmant Software</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -59,23 +59,16 @@
 </head>
 <body class="full-screen login">
     <nav class="navbar navbar-ct-transparent navbar-fixed-top" role="navigation-demo" id="register-navbar">
-      <div class="container tim">
+      <div class="container tim col-xs-offset-4">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <div class="navbar-header ">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="logo-container">
-                <div class="logo">
-                    <img src="assets/img/logo/logo7.png" alt="Creative Tim Logo">
-                </div>
-                <div class="brand">
-                    Loan Software
-                </div>
-            </div>
+          
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,11 +83,13 @@
             <div class="filter-black"></div>
             <div class="container tim">
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
+                        <div class="col-md-4 col-md-offset-4 col-sm-6  ">
 
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                             <div class="demo-card">
-                                <h3 class="title">Welcome</h3>
+                                <div class="logo ">
+                    <img src="assets/img/logo/apka_munim.png" style="width:100%;" alt="Best Girvi Loan Managment">
+                </div>
                                 <form class="register-form">
                                     <label>Username</label>
                                     <input type="text" class="form-control" placeholder="Username" name="user-name" id="user-name" required="required"
@@ -114,6 +109,7 @@
                         </form>
                         </div>
                     </div>
+                    <div class="text-center "><p>Copywrite @ <a href="http://www.predragsystem.in" target="_blank" class="text-danger">PreDrag System</a></p></div>
             </div>     
              <div class="modal fade" id="smallAlertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-small ">
