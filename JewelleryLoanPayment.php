@@ -142,14 +142,20 @@ if(isset($_POST['submit']) == 'Save') {
                     $totalday = 0;
                     if(!empty($result["loan_date"])){
                         
+                        $loanTransactionDate = "select * FROM jewellery_loan_transaction where loan_id = ".$_REQUEST['loan_id']."  ";
+                         $loanTD = mysqli_query($conn,$loanTransactionDate);
                         $now = time(); // or your date as well
+                $rate = $result['interest_percentage'];
+
+          while($resultData = mysqli_fetch_array($loanTD)) { 
+                if($resultData['trasactionType'] == "Loan Approved"){
                         $loanDate = strtotime($result["loan_date"]);
                         $dayCalculate = $now - $loanDate;
-                        $amount = (int)$result['loan_grand_amount'];
-                        $rate = $result['interest_percentage'];
-                       // $totalday = ($dayCalculate / (60 * 60 * 24));
+                        //$amount = (int)$result['loan_grand_amount'];
+                        $amount = (int)$resultData['grandamt'];
+                        $totalday = round($dayCalculate / (60 * 60 * 24));
                         
-                        $totalday = round(($dayCalculate) / 60 / 60 / 24);
+                        //$totalday = (($dayCalculate) / 60 / 60 / 24);
 
                     $years = round((int)$totalday / 365, 4);
                     $interest = round($amount * ($rate) / 100, 2);
@@ -157,7 +163,31 @@ if(isset($_POST['submit']) == 'Save') {
                     //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
                     $finalinterest = $totalday * $interestperday;
                     
-                    $finalinterest = round($finalinterest,2);
+                   $finalinterest = round($finalinterest,2);
+                     
+                 }
+                 
+                  if($resultData['trasactionType'] == "Additional Loan"){
+                        $loanDate = strtotime($resultData["trans_date"]);
+                        $dayCalculate = $now - $loanDate;
+                        //$amount = (int)$result['loan_grand_amount'];
+                        $amount = (int)$resultData['grandamt'];
+                        
+                        
+                        $totalday = round($dayCalculate / (60 * 60 * 24));
+                        
+                        //$totalday = (($dayCalculate) / 60 / 60 / 24);
+
+                    $years = round((int)$totalday / 365, 4);
+                    $interest = round($amount * ($rate) / 100, 2);
+                    $interestperday = ((int)($interest) / (int)(30));
+                    //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
+                    $additionalIntrest = ($finalinterest + ($totalday * $interestperday));
+                    
+                   $finalinterest = round($additionalIntrest,2);
+
+                  }
+                }
                     }
                 ?>
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">

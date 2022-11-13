@@ -87,7 +87,7 @@ $query = mysqli_query($conn,$parentSqlQuery);
     
     $ldate=date('Y-m-d',strtotime($_POST['loanDate']));
    	$today = date('Y-m-d');
-     echo $result="insert into jewellery_loan_transaction(loan_id,trans_date,grandamt,trasactionType) values(".$lid.",'".$today."',".$_POST['loanGrandAmount'].",'Loan Approved')";
+     echo $result="insert into jewellery_loan_transaction(loan_id,trans_date,grandamt,trasactionType) values(".$lid.",'".$_POST['loanDate']."',".$_POST['loanGrandAmount'].",'Loan Approved')";
     
 $jewell = mysqli_query($conn,$result);
 

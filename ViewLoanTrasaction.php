@@ -44,7 +44,7 @@ table td{
 
 
                 $sqlQuery="SELECT  lt.*,jl.*,jt.* FROM jewellery_loan as jl 
-                inner join jewellery_loan_transaction as lt on lt.loan_id=jl.loan_id 
+                inner join jewellery_loan_transaction as lt on jl.loan_id = lt.loan_id 
                 inner join jewellery_loan_item as jt on jt.jewellery_loan_id=lt.id";
 
                 if(isset($_GET['loan_id']) && $_GET['loan_id'] !="" ){
@@ -53,6 +53,7 @@ table td{
 
                       $loanTransactionDate = "select * FROM jewellery_loan_transaction where loan_id = ".$_REQUEST['loan_id']."  ";  
               $loanTD = mysqli_query($conn,$loanTransactionDate);
+              $loanTD1 = mysqli_query($conn,$loanTransactionDate);
            //  $res = mysqli_fetch_array($loanTD);  
     
              $query = mysqli_query($conn,$sqlQuery);
@@ -112,10 +113,14 @@ table td{
             <th>Paid Amount</th><td><?php echo round($result["paid_amt"]);?></td>
             <th>Pending Amount</th><td><?php
                 $now = time(); // or your date as well
+                $rate = $result['interest_percentage'];
+
+          while($resultData = mysqli_fetch_array($loanTD)) { 
+                if($resultData['trasactionType'] == "Loan Approved"){
                         $loanDate = strtotime($result["loan_date"]);
                         $dayCalculate = $now - $loanDate;
-                        $amount = (int)$result['loan_grand_amount'];
-                        $rate = $result['interest_percentage'];
+                        //$amount = (int)$result['loan_grand_amount'];
+                        $amount = (int)$resultData['grandamt'];
                         $totalday = round($dayCalculate / (60 * 60 * 24));
                         
                         //$totalday = (($dayCalculate) / 60 / 60 / 24);
@@ -126,8 +131,32 @@ table td{
                     //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
                     $finalinterest = $totalday * $interestperday;
                     
-                    $finalinterest = round($finalinterest,2);
-                     echo round(($result['loan_grand_amount'] + ($finalinterest) - $result['paid_amt']),2);
+                   $finalinterest = round($finalinterest,2);
+                     
+                 }
+                 
+                  if($resultData['trasactionType'] == "Additional Loan"){
+                        $loanDate = strtotime($resultData["trans_date"]);
+                        $dayCalculate = $now - $loanDate;
+                        //$amount = (int)$result['loan_grand_amount'];
+                        $amount = (int)$resultData['grandamt'];
+                        
+                        
+                        $totalday = round($dayCalculate / (60 * 60 * 24));
+                        
+                        //$totalday = (($dayCalculate) / 60 / 60 / 24);
+
+                    $years = round((int)$totalday / 365, 4);
+                    $interest = round($amount * ($rate) / 100, 2);
+                    $interestperday = ((int)($interest) / (int)(30));
+                    //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
+                    $additionalIntrest = ($finalinterest + ($totalday * $interestperday));
+                    
+                   $finalinterest = round($additionalIntrest,2);
+
+                  }
+                }
+                echo round(($result['loan_grand_amount'] + ($finalinterest) - $result['paid_amt']),2);
             ?></td>
           </tr>
         </table>
@@ -141,7 +170,7 @@ table td{
           </tr>
           <?php 
           $balance = 0;
-          while($result1 = mysqli_fetch_array($loanTD)) { ?>
+          while($result1 = mysqli_fetch_array($loanTD1)) { ?>
             <tr>
               <td><?php echo $result1['trans_date']; ?></td>
               <td><?php echo $result1['trasactionType']; ?></td>

@@ -143,6 +143,53 @@ if(isset($_POST['submit']) == 'Save') {
                 </SCRIPT>";
      
 }
+
+$loanTransactionDate = "select * FROM jewellery_loan_transaction where loan_id = ".$_REQUEST['loan_id']."  ";
+                         $loanTD = mysqli_query($conn,$loanTransactionDate);
+                        $now = time(); // or your date as well
+                $rate = $result['interest_percentage'];
+
+          while($resultData = mysqli_fetch_array($loanTD)) { 
+                if($resultData['trasactionType'] == "Loan Approved"){
+                        $loanDate = strtotime($result["loan_date"]);
+                        $dayCalculate = $now - $loanDate;
+                        //$amount = (int)$result['loan_grand_amount'];
+                        $amount = (int)$resultData['grandamt'];
+                        $totalday = round($dayCalculate / (60 * 60 * 24));
+                        
+                        //$totalday = (($dayCalculate) / 60 / 60 / 24);
+
+                    $years = round((int)$totalday / 365, 4);
+                    $interest = round($amount * ($rate) / 100, 2);
+                    $interestperday = ((int)($interest) / (int)(30));
+                    //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
+                    $finalinterest = $totalday * $interestperday;
+                    
+                   $finalinterest = round($finalinterest,2);
+                     
+                 }
+                 
+                  if($resultData['trasactionType'] == "Additional Loan"){
+                        $loanDate = strtotime($resultData["trans_date"]);
+                        $dayCalculate = $now - $loanDate;
+                        //$amount = (int)$result['loan_grand_amount'];
+                        $amount = (int)$resultData['grandamt'];
+                        
+                        
+                        $totalday = round($dayCalculate / (60 * 60 * 24));
+                        
+                        //$totalday = (($dayCalculate) / 60 / 60 / 24);
+
+                    $years = round((int)$totalday / 365, 4);
+                    $interest = round($amount * ($rate) / 100, 2);
+                    $interestperday = ((int)($interest) / (int)(30));
+                    //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
+                    $additionalIntrest = ($finalinterest + ($totalday * $interestperday));
+                    
+                   $finalinterest = round($additionalIntrest,2);
+
+                  }
+                }
   
 ?>
  <body onload="totalAmount()">
@@ -206,12 +253,7 @@ if(isset($_POST['submit']) == 'Save') {
             <input type="text" value="<?php echo $result["interest_percentage"];?>"  id="interestPercentage" name="interestPercentage" autocomplete="off" maxlength="250" class="form-control border-input" readonly>
                         </div>
                  </div>
-                  <div class="col-sm-6">
-                  <div class="form-group">
-                        <label for="Monthly Interest Amount">Monthly Interest Amount</label> 
-            <input type="text" value="<?php echo number_format($result["month_interest_amount"],2);?>"  id="monthInterestAmount" name="monthInterestAmount" autocomplete="off" maxlength="250" class="form-control border-input" readonly>
-                        </div>
-                 </div>
+                  
                   <div class="col-sm-6">
                   
                  </div>
@@ -222,7 +264,7 @@ if(isset($_POST['submit']) == 'Save') {
                  
                       <div class="form-group">
                         <label>Loan Balance</label> 
-                            <input type="text" value="<?php echo number_format($result["loan_bal_amt"],2);?>" id="loanBalance" name="loanBalance" class="form-control border-input" readonly>
+                            <input type="text" value="<?php echo ($result["loan_bal_amt"] + $finalinterest);?>" id="loanBalance" name="loanBalance" class="form-control border-input" readonly>
                         </div>
                  </div>
                      
@@ -230,13 +272,13 @@ if(isset($_POST['submit']) == 'Save') {
                   <div class="col-sm-6">
                   <div class="form-group">
                         <label>Loan Pay</label> 
-                        <input type="text" value="<?php echo number_format($result["loan_bal_amt"],2);?>"  id="loanPay" name="loanPay" autocomplete="off" maxlength="250" class="form-control border-input" readonly>
+                        <input type="text" value="<?php echo ($result["loan_bal_amt"] + $finalinterest);?>"  id="loanPay" name="loanPay" autocomplete="off" maxlength="250" class="form-control border-input" readonly>
                         </div>
                  </div>
                   <div class="col-sm-6">
                   <div class="form-group">
                         <label>Total Pay</label> 
-                        <input type="text" value="<?php echo number_format($result["loan_bal_amt"],2);?>"  id="totalPay" name="totalPay" autocomplete="off" maxlength="250" class="form-control border-input" onkeyup ="totalAmount();" readonly>
+                        <input type="text" value="<?php echo ($result["loan_bal_amt"] + $finalinterest);?>"  id="totalPay" name="totalPay" autocomplete="off" maxlength="250" class="form-control border-input" onkeyup ="totalAmount();" readonly>
                         </div>
                  </div>
                   <div class="col-sm-6">
