@@ -91,7 +91,7 @@ if(isset($_POST['submit']) == 'Save') {
 
 
 
-  echo  $query = "insert into jewellery_loan_transaction(loan_id,trans_date,loan_pay,total_pay,payment_mode,created_date,modified_date,loan_balance,interest_balance,penalty,trasactionType) values(".$_POST['loan_id'].",'".$today."',".$_POST['loanPay'].",".$_POST['totalPay'].",'',now(),now(),".$_POST['loanBalanceAmt'].",
+  echo  $query = "insert into jewellery_loan_transaction(loan_id,trans_date,loan_pay,total_pay,payment_mode,created_date,modified_date,loan_balance,interest_balance,penalty,trasactionType) values(".$_POST['loan_id'].",'".$_POST['interestToDate']."',".$_POST['loanPay'].",".$_POST['totalPay'].",'',now(),now(),".$_POST['loanBalanceAmt'].",
         ".$_POST['interestBalance'].",0,'Amount Paid')";
 
 
