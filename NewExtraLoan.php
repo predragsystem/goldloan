@@ -49,7 +49,7 @@
       $ldate=date('Y-m-d',strtotime($_POST['loanDate']));
       $lid = $_POST['loan_id'];
       $today = date('Y-m-d');
-      $result="insert into jewellery_loan_transaction(loan_id,trans_date,grandamt,trasactionType) values(".$lid.",'".$today."',".$_POST['reqLoanAmt'].",'Additional Loan')";
+      $result="insert into jewellery_loan_transaction(loan_id,trans_date,grandamt,trasactionType) values(".$lid.",'".$_POST['interestToDate']."',".$_POST['reqLoanAmt'].",'Additional Loan')";
       $jewell = mysqli_query($conn,$result);
       $finalAmt = ($_POST['loan_grand_amount'] + $_POST['reqLoanAmt']);
       $extraAmt = 'update jewellery_loan set loan_grand_amount='.$finalAmt.'

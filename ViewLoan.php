@@ -60,12 +60,14 @@
                         $dayCalculate = $now - $loanDate;
                         //$amount = (int)$result['loan_grand_amount'];
                         $amount = (int)$resultData['grandamt'];
+                        $paidAmt = (int)$data['paid_amt'];
+                        $totalAmt = ($amount - $paidAmt);
                         $totalday = round($dayCalculate / (60 * 60 * 24));
                         
                         //$totalday = (($dayCalculate) / 60 / 60 / 24);
 
                     $years = round((int)$totalday / 365, 4);
-                    $interest = round($amount * ($rate) / 100, 2);
+                    $interest = round($totalAmt * ($rate) / 100, 2);
                     $interestperday = ((int)($interest) / (int)(30));
                     //echo $amount." ".$rate." ".$totalday." ".$interestperday."<br>";
                     $finalinterest = $totalday * $interestperday;
