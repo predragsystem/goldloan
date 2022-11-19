@@ -141,4 +141,15 @@ body::before {
         containerId: "toast-top-center"
       });      
     }
+
+    function showErrorMessage(message){
+
+      toastr.error(message, "INFORMATION", {
+        positionClass: "toast-top-right",
+        containerId: "toast-top-right",
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+      });      
+    }
   </script>

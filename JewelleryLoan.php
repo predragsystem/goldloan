@@ -95,7 +95,7 @@ $jewell = mysqli_query($conn,$result);
 $id=mysqli_insert_id($conn);  
 
 if($id!=null){
-	echo "hello";
+	
 	$gridSize = $_POST['gridSize'];
 
 	for($i = 1; $i<=$gridSize; $i++ ) {
@@ -175,7 +175,8 @@ if ($query2 == true) {
 							<label for="productBrand">
 								Customer Name<span class="spanColor">*</span>
 							</label> 
-							 <input type="text" class="form-control border-input" placeholder="Customer Name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "150" id="customerName" name="customerName" required="required">
+							 <input type="text" class="form-control border-input" placeholder="Customer Name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);this.value = this.value.replace(/[^a-z, ]/, ''); " type = "number" maxlength = "150" id="customerName" name="customerName" required="required">
+
 						</div>
 					</div>
 
@@ -373,7 +374,7 @@ function saveSnap(){
 					<div class="col-sm-3">
 						<div class="form-group">
 							 <label for="Loan Grand Amount">Loan Grand Amount<span class="spanColor">*</span></label> 
-                            <input type="text"  placeholder="Loan Grand Amount" id="loanGrandAmount" name="loanGrandAmount" autocomplete="off"  class="form-control border-input" required >
+                            <input type="text"  placeholder="Loan Grand Amount" id="loanGrandAmount" name="loanGrandAmount" autocomplete="off"  class="form-control border-input" required oninput="this.value = this.value.replace(/[^0-9.]/g, '');">
 						</div>
 					</div>
 
@@ -455,7 +456,7 @@ function saveSnap(){
 					
 					
 					<div class="button-box" align="center">
-                        <input type="submit" class="btn btn-success btn-fill btn-lg" value="Save" name="submit"  id="buttonId"  disabled="true">
+                        <input type="submit" class="btn btn-success btn-fill btn-lg" value="Save" name="submit"  id="buttonId"  disabled="true" onclick="validateForm()">
                                         
                                     
                                     <button type="reset" class="btn btn-warning mr-1 btn-lg" >
@@ -503,7 +504,7 @@ var qualityType = qualityList[k];
 qualityOption = qualityOption + '<option value="'+qualityType.id+'" >'+qualityType.quality_name+'</option>';
 }
 
-var trText = "<td> <div class='form-group'><strong><input type='hidden' id='rowHiddenId_"+i+"' name='rowHiddenId_"+i+"' value='"+i+"' ><input type='hidden' id='itemGridId_"+i+"' name='itemGridId_"+i+"' >"+i+"</strong></div></td> <td> <div class='form-group'> <input id='jewelleryTypeGrid_"+i+"' name='jewelleryTypeGrid_"+i+"'class='selectpicker form-control border-input'  data-style='no-style form-control'  data-menu-style='' required>"+"</select> </div></td> <td> <div class='form-group'> <input id='description_"+i+"' name='description_"+i+"'class=' form-control border-input'  autocomplete='off'  data-style='no-style form-control'  data-menu-style='' > </div></td><td> <div class='form-group'> <select id='location_"+i+"' name='location_"+i+"'class=' form-control border-input'  autocomplete='off'  data-style='no-style form-control'  data-menu-style='' ><option value='Home'>Home</option><option value='Locker'>Shop</option><option value='Home'>Locker</option> </select></div></td> <td> <div class='form-group'><input class='form-control border-input' type='text' placeholder='QUANTITY' id='quantityGrid_"+i+"' value='0'  name='quantityGrid_"+i+"' onkeyup='calculateOrderSummary();' required > </div> </td><td> <div class='form-group'><input class='form-control border-input' type='text' placeholder='TOTAL GRAMS'  id='totalGramsGrid_"+i+"' name='totalGramsGrid_"+i+"' value='0.00' onkeyup='calculateOrderSummary();'> </div></td><td> <div class='form-group'> <div class='modal fade' id='smallAlertModal_"+i+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true' ><div class='modal-dialog modal-small'><div class='modal-content'><div class='modal-header no-border-header'> <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button></div><div class='modal-body text-center'><h5>Do you want to delete this item!</h5></div><div class='modal-footer'> <center><button type='button'class='btn btn-danger' data-dismiss='modal' onclick='removeItem(this,"+i+");'>OK</button></center> </div> </div></div></div><button class='btn btn-danger btn-fill'  type='button'   onclick='removeItem(this,"+i+");'><i class='fa fa-trash' style='font-size:30px;color:white' aria-hidden='true'></i></button></div> </td>";
+var trText = "<td> <div class='form-group'><strong><input type='hidden' id='rowHiddenId_"+i+"' name='rowHiddenId_"+i+"' value='"+i+"' ><input type='hidden' id='itemGridId_"+i+"' name='itemGridId_"+i+"' >"+i+"</strong></div></td> <td> <div class='form-group'> <input id='jewelleryTypeGrid_"+i+"' name='jewelleryTypeGrid_"+i+"'class='selectpicker form-control border-input'  data-style='no-style form-control'  data-menu-style='' required>"+"</select> </div></td> <td> <div class='form-group'> <input id='description_"+i+"' name='description_"+i+"'class=' form-control border-input'  autocomplete='off'  data-style='no-style form-control'  data-menu-style='' > </div></td><td> <div class='form-group'> <select id='location_"+i+"' name='location_"+i+"'class=' form-control border-input'  autocomplete='off'  data-style='no-style form-control'  data-menu-style='' ><option value='Home'>Home</option><option value='Locker'>Shop</option><option value='Home'>Locker</option> </select></div></td> <td> <div class='form-group'><input class='form-control border-input' type='text' placeholder='QUANTITY' id='quantityGrid_"+i+"' value='0'  name='quantityGrid_"+i+"' onkeyup='calculateOrderSummary();' onkeypress='return isNumber(event)' required > </div> </td><td> <div class='form-group'><input class='form-control border-input' type='text' placeholder='TOTAL GRAMS'  id='totalGramsGrid_"+i+"' name='totalGramsGrid_"+i+"' value='0.00' onkeyup='calculateOrderSummary();' onkeypress='return isNumberKey(event)'> </div></td><td> <div class='form-group'> <div class='modal fade' id='smallAlertModal_"+i+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true' ><div class='modal-dialog modal-small'><div class='modal-content'><div class='modal-header no-border-header'> <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button></div><div class='modal-body text-center'><h5>Do you want to delete this item!</h5></div><div class='modal-footer'> <center><button type='button'class='btn btn-danger' data-dismiss='modal' onclick='removeItem(this,"+i+");'>OK</button></center> </div> </div></div></div><button class='btn btn-danger btn-fill'  type='button'   onclick='removeItem(this,"+i+");'><i class='fa fa-trash' style='font-size:30px;color:white' aria-hidden='true'></i></button></div> </td>";
 
 $('#tab_logic').append('<tr id="addr' + i + '">"'+ trText+ '"</tr>');
 
@@ -520,7 +521,56 @@ i++;
 
 }
 
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
 
+function isNumberKey(evt)
+{
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode != 46 && charCode > 31 
+    && (charCode < 48 || charCode > 57))
+     return false;
+
+  return true;
+}
+
+function validateForm(){
+	var phoneNo = document.getElementById('phoneNo').value;
+	
+        //var x=check.which;
+        //var x = a.charCode;
+        var x = phoneNo.keyCode;
+        if(!(phoneNo >= 48 || phoneNo <= 57))
+        {
+            showErrorMessage('Enter only number in contact number');
+            return false;
+        }       
+        else if(phoneNo=="" || phoneNo==null)
+        {
+            showErrorMessage('Mobile number field must have value');
+            return false;
+        }
+// if no is more then the value 
+        else if (phoneNo.length <= 9)
+        {
+        	document.getElementById('phoneNo').focus();
+            showErrorMessage('Mobile number must have 10 digit');
+
+            return false;
+        }
+
+        var gender = document.getElementById('gender').value;
+        if(gender == "" || gender == null){
+        	showErrorMessage('Select Gender');
+            return false;
+        }
+}
 
 
    
