@@ -87,7 +87,7 @@ $query = mysqli_query($conn,$parentSqlQuery);
     
     $ldate=date('Y-m-d',strtotime($_POST['loanDate']));
    	$today = date('Y-m-d');
-     echo $result="insert into jewellery_loan_transaction(loan_id,trans_date,grandamt,trasactionType) values(".$lid.",'".$_POST['loanDate']."',".$_POST['loanGrandAmount'].",'Loan Approved')";
+    $result="insert into jewellery_loan_transaction(loan_id,trans_date,grandamt,trasactionType) values(".$lid.",'".$_POST['loanDate']."',".$_POST['loanGrandAmount'].",'Loan Approved')";
     
 $jewell = mysqli_query($conn,$result);
 
@@ -175,7 +175,7 @@ if ($query2 == true) {
 							<label for="productBrand">
 								Customer Name<span class="spanColor">*</span>
 							</label> 
-							 <input type="text" class="form-control border-input" placeholder="Customer Name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);this.value = this.value.replace(/[^a-z, ]/, ''); " type = "number" maxlength = "150" id="customerName" name="customerName" required="required">
+							 <input type="text" class="form-control border-input" placeholder="Customer Name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);this.value = this.value.replace(/[^a-z,^A-Z ]/, ''); " type = "number" maxlength = "150" id="customerName" name="customerName" required="required">
 
 						</div>
 					</div>

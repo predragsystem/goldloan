@@ -55,9 +55,8 @@ table td{
               $loanTD = mysqli_query($conn,$loanTransactionDate);
               $loanTD1 = mysqli_query($conn,$loanTransactionDate);
            //  $res = mysqli_fetch_array($loanTD);  
-    
              $query = mysqli_query($conn,$sqlQuery);
-                 $result = mysqli_fetch_array($query);
+            $result = mysqli_fetch_array($query);
 
         
                  if(empty($result)){
@@ -84,10 +83,14 @@ table td{
     <h4 >Customer Details</h4>
      <div style="display:flex;">
          <img src="upload/<?php echo $result["userpic"];?>">
-        <span style="text-align: right;margin-left: 77%;" >
+        <span style="text-align: right;margin-left: 60%;" >
 
         <a href="JewelleryLoanPayment.php?loan_id='<?php echo $result["loan_id"];?>'" class="btn btn-md btn-success" style="margin-bottom: 10px;">लोन भरणे </a>
-        <a href="NewExtraLoan.php?loan_id='<?php echo $result["loan_id"];?>'" class="btn btn-md btn-warning">वाढीव लोन द्या </a></span></div>
+        <a href="NewExtraLoan.php?loan_id='<?php echo $result["loan_id"];?>'" class="btn btn-md btn-warning">वाढीव लोन द्या </a>
+        <a href="EditJewelleryLoan.php?loan_id='<?php echo $result["loan_id"];?>'" class="btn btn-md btn-primary">Edit Account</a></span>
+
+
+      </div>
         <br>
          <table class="table">
           <tr>
@@ -98,15 +101,34 @@ table td{
           </tr>
         
         </table>
-        <h4>Loan Details</h4>
+        <h4>Item Details</h4>
         <table class="table">
           <tr>
-           <th>Item</th><td><?php echo $result["jewellery_type_id"];?></td>
-           <th>Description</th><td><?php echo $result["description"];?></td>
-           <th>Weight</th><td><?php echo $result["total_grams"];?></td>
-           <th>Location</th><td><?php echo $result["location"];?></td>
-           
+           <th>SrNo</th>
+           <th>Item</th>
+           <th>Description</th>
+           <th>Weight</th>
+           <th>Location</th>
+           <th>Item Return to customer?</th>
+           <?php 
+            $sqlTrasactionItem = "SELECT * FROM jewellery_loan_item WHERE jewellery_loan_id = ".$result['jewellery_loan_id']."  ";
+             $loanItem = mysqli_query($conn,$sqlTrasactionItem);
+             $count =0 ;
+           while($itemdata = mysqli_fetch_array($loanItem)) {  
+            $count++; ?>
+            <tr>
+                <td><?php echo $count; ?></td>
+                <td><?php echo $itemdata['jewellery_type_id'];?></td>
+                <td><?php echo $itemdata['description'];?></td>
+                <td><?php echo $itemdata['total_grams'];?></td>
+                <td><?php echo $itemdata['location'];?></td>
+                <td><?php echo $itemdata['isreturn'];?></td>
+              </tr>
+           <?php } ?>
           </tr>
+        </table>
+        <h4>Loan Details</h4>
+        <table class="table">
           <tr>
             <th>Loan Amount</th><td><?php echo round($result["loan_grand_amount"]);?></td>
             <th>Interest %</th><td><?php echo $result["interest_percentage"];?></td>

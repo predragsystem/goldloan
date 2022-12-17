@@ -56,7 +56,10 @@
                      where loan_id = '.$_REQUEST["loan_id"];
 
      $sqlQuery1=mysqli_query($conn,$extraAmt);
-     
+     echo "<SCRIPT LANGUAGE='JavaScript'>                   
+                     showSucessMessage('Record Updated Successfully');
+                      window.location.href='ViewLoanTrasaction.php?loan_id=$lid';
+                    </SCRIPT>";
       }  
    
 
@@ -64,7 +67,7 @@
  <div class="container">
     <h4>Additional Loan
     <span style="text-align: right;margin-left: 30%;">
-    <a href="" class="btn btn-sm">View Trasaction</a></span>
+    <a href="ViewLoanTrasaction.php?loan_id=<?php echo $result["loan_id"];?>" class="btn btn-sm">View Trasaction</a></span>
     </h4>
     <div class="row">
      
